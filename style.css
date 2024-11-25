@@ -6,7 +6,13 @@ body {
   color: #212529;
   margin: 0;
   padding: 0;
-  margin-top: 55px; /* Push content down to avoid overlapping the header */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Pushes footer to the bottom */
 }
 
 h1 {
@@ -63,18 +69,18 @@ button:hover {
 
 .filled {
   background-color: black;
-  border: none;
 }
 
 /* Footer Styles */
 footer {
-  margin-top: 20px;
   padding: 10px 0;
   text-align: center;
   font-size: 14px;
   background-color: #e9ecef;
   color: #212529;
   transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  width: 100%;
 }
 
 footer a {
@@ -94,18 +100,18 @@ footer a:hover {
   left: 0;
   width: 100%;
   background-color: #f8f9fa;
-  padding: 6px 15px; /* Reduced padding for smaller height */
+  padding: 6px 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ddd;
-  font-size: 14px; /* Reduced font size */
+  font-size: 14px;
 }
 
 .header-link {
   font-size: 14px;
   font-weight: bold;
-  color: black;
+  color: #007bff;
   text-decoration: none;
 }
 
@@ -121,12 +127,11 @@ footer a:hover {
 
 .dropbtn {
   font-size: 12px;
-  font-weight: bold;
-  background-color: #fff;
-  color: black;
-  border: 2px solid #ccc;
+  background-color: #007bff;
+  color: white;
+  border: 2px solid #0056b3;
   border-radius: 5px;
-  padding: 6px 12px; /* Adjusted padding for smaller button */
+  padding: 6px 12px;
   cursor: pointer;
 }
 
@@ -137,7 +142,7 @@ footer a:hover {
 .dropdown-content {
   display: none;
   position: absolute;
-  right: 5px; /* Ensure dropdown aligns properly within the screen */
+  right: 5px;
   background-color: #f8f9fa;
   min-width: 160px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
@@ -146,15 +151,4 @@ footer a:hover {
 
 .dropdown-content a {
   color: #212529;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #e9ecef;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+  padding:
