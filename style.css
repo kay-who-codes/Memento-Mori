@@ -1,3 +1,4 @@
+/* General Body Styles */
 body {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -5,6 +6,7 @@ body {
   color: #212529;
   margin: 0;
   padding: 0;
+  margin-top: 55px; /* Push content down to avoid overlapping the header */
 }
 
 h1 {
@@ -61,8 +63,10 @@ button:hover {
 
 .filled {
   background-color: black;
+  border: none;
 }
 
+/* Footer Styles */
 footer {
   margin-top: 20px;
   padding: 10px 0;
@@ -83,24 +87,25 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Header Styles */
+/* Header Bar Styles */
 .header-bar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #f8f9fa;
-  padding: 10px 20px;
+  padding: 6px 15px; /* Reduced padding for smaller height */
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ddd;
+  font-size: 14px; /* Reduced font size */
 }
 
 .header-link {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
-  color: #007bff;
+  color: black;
   text-decoration: none;
 }
 
@@ -108,17 +113,20 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* Dropdown Menu Styles */
 .dropdown {
   position: relative;
+  display: inline-block;
 }
 
 .dropbtn {
   font-size: 12px;
-  background-color: #007bff;
-  color: white;
-  border: 2px solid #0056b3;
+  font-weight: bold;
+  background-color: #fff;
+  color: black;
+  border: 2px solid #ccc;
   border-radius: 5px;
-  padding: 8px 16px;
+  padding: 6px 12px; /* Adjusted padding for smaller button */
   cursor: pointer;
 }
 
@@ -129,7 +137,7 @@ footer a:hover {
 .dropdown-content {
   display: none;
   position: absolute;
-  right: 0;
+  right: 5px; /* Ensure dropdown aligns properly within the screen */
   background-color: #f8f9fa;
   min-width: 160px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
@@ -137,9 +145,9 @@ footer a:hover {
 }
 
 .dropdown-content a {
+  color: #212529;
   padding: 12px 16px;
   text-decoration: none;
-  color: #212529;
   display: block;
 }
 
