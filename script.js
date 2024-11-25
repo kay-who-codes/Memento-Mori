@@ -18,11 +18,24 @@ function generateDiagram() {
   // Calculate the square size and spacing for desktop/mobile
   const containerWidth = window.innerWidth;
   const isMobile = containerWidth <= 768;
-  const margin = isMobile ? 4 : 0; // Add margin for mobile screens
-  const spacing = isMobile ? 4 : 5; // Adjust spacing for mobile and desktop
-  const availableWidth = containerWidth - margin * 2 - (weeksPerYear - 1) * spacing;
-  const squareSize = Math.max(Math.floor(availableWidth / weeksPerYear), 5); // Ensure minimum size of 5px
 
+  // Adjust spacing and margins based on screen size
+  const spacing = 2; // 2px gap between squares
+  const margin = isMobile ? 10 : 20; // More space on mobile to ensure all squares fit
+
+  const availableWidth = containerWidth - margin * 2 - (weeksPerYear - 1) * spacing;
+  const squareSize = Math.max(Math.floor(availableWidth / weeksPerYear), 5); // Ensure minimum square size of 5px
+
+  // Ensure all 52 squares fit inside the screen width on mobile and desktop
+  if (isMobile) {
+    diagram.style.paddingLeft = '10px';  // Adjust left margin for mobile
+    diagram.style.paddingRight = '10px'; // Adjust right margin for mobile
+  } else {
+    diagram.style.paddingLeft = `${margin}px`;  // Adjust left margin for desktop
+    diagram.style.paddingRight = `${margin}px`; // Adjust right margin for desktop
+  }
+
+  // Generate the diagram row by row
   for (let i = 0; i < Math.ceil(totalWeeks / weeksPerYear); i++) {
     const row = document.createElement('div');
     row.style.display = 'flex';
