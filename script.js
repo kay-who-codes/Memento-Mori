@@ -16,17 +16,30 @@ function generateDiagram() {
   const totalWeeks = expectedAge * weeksPerYear;
   const livedWeeks = Math.floor(age * weeksPerYear);
 
+  // Calculate the square size and spacing for desktop
+  const containerWidth = window.innerWidth;
+  const isMobile = containerWidth <= 768;
+  const margin = isMobile ? 4 : 0; // Add margin for mobile screens
+  const spacing = 5; // 5px spacing between squares
+  const squareSize = Math.floor((containerWidth - margin * 2 - (weeksPerYear - 1) * spacing) / weeksPerYear);
+
   for (let i = 0; i < expectedAge; i++) {
     const row = document.createElement('div');
     row.style.display = 'flex';
     row.style.justifyContent = 'center';
+    row.style.marginBottom = `${spacing}px`;
 
     for (let j = 0; j < weeksPerYear; j++) {
       const week = document.createElement('div');
       week.classList.add('week');
+      week.style.width = `${squareSize}px`;
+      week.style.height = `${squareSize}px`;
+      week.style.marginRight = j === weeksPerYear - 1 ? '0' : `${spacing}px`;
+
       if (i * weeksPerYear + j < livedWeeks) {
         week.classList.add('filled');
       }
+
       row.appendChild(week);
     }
 
@@ -34,6 +47,12 @@ function generateDiagram() {
   }
 }
 
-// Adjust content on page load
-window.onload = adjustContent;
-window.onresize = adjustContent;
+// Adjust content and regenerate diagram on page load and resize
+window.onload = () => {
+  adjustContent();
+  generateDiagram();
+};
+window.onresize = () => {
+  adjustContent();
+  generateDiagram();
+};
