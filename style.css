@@ -1,9 +1,118 @@
+/* General Body Styles */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f8f9fa;
+  color: #212529;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Pushes footer to the bottom */
+}
+
+h1 {
+  font-size: 34px;
+  margin: 30px 0;
+}
+
+.inputs {
+  margin: 25px 0;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+input {
+  margin-left: 10px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+button {
+  margin: 15px 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: darkgrey;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: grey;
+}
+
+#diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding-left: 20px; /* Default padding */
+  padding-right: 20px; /* Default padding */
+}
+
+/* Week Squares */
+.week {
+  border: 2px solid black;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.filled {
+  background-color: black;
+}
+
+/* Mobile-Specific Adjustments */
+@media (max-width: 768px) {
+  #diagram {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .week:first-child,
+  .week:nth-child(52) {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+}
+
+/* Footer Styles */
+footer {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 14px;
+  background-color: #e9ecef;
+  color: #212529;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  width: 100%;
+}
+
+footer a {
+  color: #212529;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 /* Header Bar Styles */
 .header-bar {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 9%;
   background-color: #f8f9fa;
   padding: 6px 15px;
   display: flex;
@@ -67,112 +176,4 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-
-/* General Body Styles */
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f8f9fa;
-  color: #212529;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1; /* Pushes footer to the bottom */
-}
-
-h1 {
-  font-size: 34px;
-  margin: 30px 0;
-}
-
-.inputs {
-  margin: 25px 0;
-}
-
-label {
-  display: block;
-  margin: 10px 0;
-  font-size: 16px;
-}
-
-input {
-  margin-left: 10px;
-  padding: 5px;
-  font-size: 16px;
-}
-
-button {
-  margin: 15px 0;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: darkgrey;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: grey;
-}
-
-#diagram {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
-/* Week Squares */
-.week {
-  border: 2px solid black;
-  border-radius: 2px;
-  display: inline-block;
-}
-
-.filled {
-  background-color: black;
-}
-
-/* Mobile-Specific Adjustments */
-@media (max-width: 768px) {
-  #diagram {
-    margin-left: 2px;
-    margin-right: 2px;
-  }
-
-  .week:first-child,
-  .week:nth-child(52) {
-    margin-left: 2px;
-    margin-right: 2px;
-  }
-}
-
-/* Footer Styles */
-footer {
-  padding: 10px 0;
-  text-align: center;
-  font-size: 14px;
-  background-color: #e9ecef;
-  color: #212529;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  position: relative;
-  width: 100%;
-}
-
-footer a {
-  color: #212529;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-footer a:hover {
-  text-decoration: underline;
 }
