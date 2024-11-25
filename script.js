@@ -19,8 +19,9 @@ function generateDiagram() {
   const containerWidth = window.innerWidth;
   const isMobile = containerWidth <= 768;
   const margin = isMobile ? 4 : 0; // Add margin for mobile screens
-  const spacing = 5; // 5px spacing between squares
-  const squareSize = Math.floor((containerWidth - margin * 2 - (weeksPerYear - 1) * spacing) / weeksPerYear);
+  const spacing = isMobile ? 4 : 5; // Adjust spacing for mobile and desktop
+  const availableWidth = containerWidth - margin * 2 - (weeksPerYear - 1) * spacing;
+  const squareSize = Math.max(Math.floor(availableWidth / weeksPerYear), 5); // Ensure minimum size of 5px
 
   for (let i = 0; i < Math.ceil(totalWeeks / weeksPerYear); i++) {
     const row = document.createElement('div');
