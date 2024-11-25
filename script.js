@@ -1,3 +1,9 @@
+// Ensure content is not overlapped by the header
+function adjustContent() {
+  const headerHeight = document.querySelector('.header-bar').offsetHeight;
+  document.querySelector('main').style.paddingTop = `${headerHeight}px`;
+}
+
 function generateDiagram() {
   const birthDate = new Date(document.getElementById('birthDate').value);
   const expectedAge = parseInt(document.getElementById('expectedAge').value);
@@ -27,3 +33,7 @@ function generateDiagram() {
     diagram.appendChild(row);
   }
 }
+
+// Adjust content on page load
+window.onload = adjustContent;
+window.onresize = adjustContent;
