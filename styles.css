@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Ensure it doesn't stretch too much on wide screens */
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 5px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+#weeks-container {
+    display: grid;
+    grid-template-columns: repeat(52, 18px); /* Ensure 52 weeks per row */
+    gap: 5px;
+    justify-content: center;
+    max-width: fit-content; /* Ensures it only takes up necessary space */
+    margin: 0 auto;
+}
+
+.week {
+    width: 18px;
+    height: 18px;
+    border-radius: 2px;
+}
+
+.filled {
+    background-color: black;
+}
+
+.unfilled {
+    background-color: white;
+    border: 2px solid black;
+}
+
+/* Allow scrolling if content exceeds viewport height */
+html, body {
+    overflow-y: auto;
+}

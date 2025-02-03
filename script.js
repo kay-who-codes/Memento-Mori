@@ -1,58 +1,45 @@
-// Ensure content is not overlapped by the header
-function adjustContent() {
-  const headerHeight = document.querySelector('.header-bar').offsetHeight;
-  document.querySelector('main').style.paddingTop = `${headerHeight}px`;
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const birthdateInput = document.getElementById("birthdate");
+    const lifespanInput = document.getElementById("lifespan");
+    const weeksContainer = document.getElementById("weeks-container");
 
-function generateDiagram() {
-  const birthDate = new Date(document.getElementById('birthDate').value);
-  const expectedAge = parseInt(document.getElementById('expectedAge').value);
-  const diagram = document.getElementById('diagram');
-  diagram.innerHTML = '';
+    function calculateWeeksLived(birthdate, lifespan) {
+        const birthDate = new Date(birthdate);
+        const today = new Date();
+        const totalWeeks = lifespan * 52;
+        
+        // Calculate lived weeks
+        const differenceInTime = today - birthDate;
+        const livedWeeks = Math.floor(differenceInTime / (1000 * 60 * 60 * 24 * 7));
 
-  const weeksPerYear = 52;
-  const currentDate = new Date();
-  const age = (currentDate - birthDate) / (1000 * 60 * 60 * 24 * 365.25);
-  const totalWeeks = expectedAge * weeksPerYear;
-  const livedWeeks = Math.floor(age * weeksPerYear);
-
-  // Calculate the square size and spacing for desktop
-  const containerWidth = window.innerWidth;
-  const isMobile = containerWidth <= 768;
-  const margin = isMobile ? 4 : 0; // Add margin for mobile screens
-  const spacing = 5; // 5px spacing between squares
-  const squareSize = Math.floor((containerWidth - margin * 2 - (weeksPerYear - 1) * spacing) / weeksPerYear);
-
-  for (let i = 0; i < expectedAge; i++) {
-    const row = document.createElement('div');
-    row.style.display = 'flex';
-    row.style.justifyContent = 'center';
-    row.style.marginBottom = `${spacing}px`;
-
-    for (let j = 0; j < weeksPerYear; j++) {
-      const week = document.createElement('div');
-      week.classList.add('week');
-      week.style.width = `${squareSize}px`;
-      week.style.height = `${squareSize}px`;
-      week.style.marginRight = j === weeksPerYear - 1 ? '0' : `${spacing}px`;
-
-      if (i * weeksPerYear + j < livedWeeks) {
-        week.classList.add('filled');
-      }
-
-      row.appendChild(week);
+        return { livedWeeks, totalWeeks };
     }
 
-    diagram.appendChild(row);
-  }
-}
+    function generateWeeksDiagram() {
+        const birthdate = birthdateInput.value;
+        const lifespan = parseInt(lifespanInput.value, 10);
 
-// Adjust content and regenerate diagram on page load and resize
-window.onload = () => {
-  adjustContent();
-  generateDiagram();
-};
-window.onresize = () => {
-  adjustContent();
-  generateDiagram();
-};
+        if (!birthdate || isNaN(lifespan) || lifespan <= 0) return;
+
+        const { livedWeeks, totalWeeks } = calculateWeeksLived(birthdate, lifespan);
+        weeksContainer.innerHTML = "";
+
+        for (let i = 0; i < totalWeeks; i++) {
+            const weekElement = document.createElement("div");
+            weekElement.classList.add("week");
+            if (i < livedWeeks) {
+                weekElement.classList.add("filled");
+            } else {
+                weekElement.classList.add("unfilled");
+            }
+            weeksContainer.appendChild(weekElement);
+        }
+    }
+
+    // Update diagram whenever inputs change
+    birthdateInput.addEventListener("input", generateWeeksDiagram);
+    lifespanInput.addEventListener("input", generateWeeksDiagram);
+
+    // Initial diagram
+    generateWeeksDiagram();
+});
